@@ -1,0 +1,42 @@
+<br/>
+  <div class="form-group ">
+    <div class="col-xs-offset-1 col-lg-offset-2 col-xs-10 col-lg-8 button">
+      <h3 *ngIf="error_message !== ''" class="alert alert-danger"><b>{{error_message}}</b></h3>
+    </div>
+  </div>
+<br/>
+<div class="form-horizontal bg-info
+            col-xs-offset-1 col-lg-offset-3 col-xs-10 col-lg-6">
+
+  <div class="row col-xs-offset-1">
+
+  <div class="form-group">
+    <h3 class="col-xs-10">Login</h3>
+  </div>
+
+  <div class="form-group">
+    <div class="col-xs-10">
+      <label>Login: *</label>
+      <input [(ngModel)]="login" type="text" class="form-control" required/>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-xs-10">
+      <label>Password: *</label>
+      <input [(ngModel)]="password" type="password" class="form-control" required/>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-xs-10">
+      <div class="button">
+        <button (click)="logIn()" type="button" class="form-control btn-primary ">
+          <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> Login
+        </button>
+      </div>
+    </div>
+  </div>
+
+  </div>
+</div>

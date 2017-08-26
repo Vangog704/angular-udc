@@ -1,0 +1,26 @@
+<admin_cab_headrer></admin_cab_headrer>
+
+<div *ngIf="table_data; else loading">
+<table class="table table-striped">
+
+  <thead style="font-size: 18px; background-color: #CCCCCC">
+    <tr>
+      <th *ngFor="let field of field_names">{{field}}</th>
+    </tr>
+  </thead>
+
+  <tbody style="font-size: 16px;">
+    <tr *ngFor="let data of table_data">
+      <th *ngFor="let field of field_names">
+        <b *ngIf="data[field]; else NA">{{data[field]}}</b>
+        <ng-template #NA><b>N\A</b></ng-template>
+      </th>
+    </tr>
+  </tbody>
+
+</table>
+</div>
+<ng-template #loading>
+  <i class="fa fa-refresh fa-spin" style="font-size:24px; color: black;"></i> Loading...
+</ng-template>
+

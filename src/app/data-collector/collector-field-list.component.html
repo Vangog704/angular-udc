@@ -1,0 +1,48 @@
+<nav>
+  <h4>
+    <a routerLink="/login" routerLinkActive="active"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Login</a>
+  </h4>
+</nav>
+
+ <div class="field-list">
+  <div class="form-horizontal col-sx-offset-1">
+    <br/>
+    <div class="form-group">
+      <h3 class="col-xs-10" >Please, fill and send form</h3>
+    </div>
+
+    <div class="form-group ">
+      <div class="col-xs-10 col-sm-4 button">
+        <h3 *ngIf="error_message !== ''" class="alert alert-danger"><b>{{error_message}}</b></h3>
+      </div>
+    </div>
+
+    <ng-template field-host></ng-template>
+
+    <div class="form-group">
+      <div *ngIf="!ready; else Ready" class="col-xs-10">
+        <b><i class="fa fa-refresh fa-spin" style="font-size:24px; color: black;"></i> Loading...</b>
+      </div>
+    </div>
+
+    <ng-template class="form-group" #Ready>
+
+      <br/>
+
+        <div class="col-xs-10 col-sm-4 button">
+          <button type="button" class="form-control btn btn-primary" (click)="collect()">
+            <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Submit
+          </button>
+          <button type="button" class="form-control btn " (click)="reset()">
+              <span class="glyphicon glyphicon-retweet" aria-hidden="true"></span> Reset
+            </button>
+          </div>
+
+    </ng-template>
+
+  </div>
+</div>
+
+
+
+

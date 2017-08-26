@@ -1,0 +1,99 @@
+<admin_cab_headrer></admin_cab_headrer>
+
+  <div class="form-horizontal">
+
+    <div class="form-group">
+      <h3 class="col-xs-10">Create/Edit Filed</h3>
+    </div>
+    <div *ngIf="field; else loading">
+
+      <div class="form-group">
+        <label class="col-xs-3 col-lg-1 control-label">Label: *</label>
+        <div class="col-xs-6 col-lg-4">
+          <input [(ngModel)]="field.label" class="form-control" type="text" placeholder="Field name..." />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-xs-3 col-lg-1 control-label"></label>
+        <div class="col-xs-6 col-lg-4">
+          <div class="checkbox">
+            <label><input type="checkbox" [(ngModel)]="field.isActive"> IsActive</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-xs-3 col-lg-1 control-label"></label>
+        <div class="col-xs-6 col-lg-4">
+          <div class="checkbox">
+            <label><input type="checkbox" [(ngModel)]="field.required"> Required</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-xs-3 col-lg-1 control-label">Type: *</label>
+        <div class="col-xs-6 col-lg-4 selectContainer">
+          <select (change)="typeChange()" [(ngModel)]="field.type" class="form-control">
+            <option value="simpletext">Simpletext</option>
+            <option value="multitext">Multitext</option>
+            <option value="date">Date</option>
+            <option value="combobox">Combobox</option>
+            <option value="checkbox">Checkbox</option>
+            <option value="radio">Radio</option>
+          </select>
+        </div>
+      </div>
+
+      <div *ngIf="field.items">
+        <div class="form-group">
+          <label class="col-xs-3 col-lg-1 control-label"></label>
+          <div class="col-xs-6 col-lg-4">
+            <table class="table">
+              <thead>
+              <h4>Options</h4>
+                <div class="input-group">
+                  <input class="form-control" text="text" [(ngModel)]="new_item">
+                  <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" (click)="addItem()">Add</button>
+                  </span>
+                </div>
+              </thead>
+              <br/>
+              <tbody>
+                <select multiple class="form-control">
+                  <option *ngFor="let item of field.items" value="{{item}}" (click)="deleteItem(item)">{{item}}</option>
+                </select>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <br/>
+
+      <div class="form-group">
+        <label class="col-xs-3 col-lg-1 control-label"></label>
+        <div class="col-xs-6 col-lg-4">
+          <div class="button">
+            <button type="button" class="form-control btn-primary " (click)="save()">
+              <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Save
+            </button>
+          </div>
+          <div class="button">
+            <button type="button" class="form-control btn" (click)="reset()">
+              <span class="glyphicon glyphicon-retweet" aria-hidden="true"></span> Reset
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <ng-template #loading>
+    <i class="fa fa-refresh fa-spin" style="font-size:24px; color: black;"></i> Loading...
+  </ng-template>
+
+

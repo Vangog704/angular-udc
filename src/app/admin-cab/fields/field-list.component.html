@@ -1,0 +1,53 @@
+
+<admin_cab_headrer></admin_cab_headrer>
+
+<h3 *ngIf="error_message !== ''" class="alert alert-danger"><b>{{error_message}}</b></h3>
+
+<table class="table table-striped">
+
+  <thead style="font-size: 18px; background-color: #CCCCCC">
+    <tr>
+      <th>Label</th>
+      <th>Type</th>
+      <th>Required</th>
+      <th>IsActive</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody *ngIf="fields; else loading" style="font-size: 16px;">
+    <tr *ngFor="let field of fields">
+      <th>{{field.label}}</th>
+      <th>{{field.type}}</th>
+      <th>
+        <button disabled style="color: black;">
+          <div *ngIf="field.required; then required_true else required_false"></div>
+            <ng-template #required_true><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></ng-template>
+            <ng-template #required_false><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></ng-template>
+        </button>
+      </th>
+      <th>
+        <button disabled style="color: black;">
+          <div *ngIf="field.isActive; then active_true else active_false"></div>
+            <ng-template #active_true><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></ng-template>
+            <ng-template #active_false><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></ng-template>
+        </button>
+      </th>
+      <th>
+        <button [routerLink]="['/fields/editor',field.label]">edit</button>
+      </th>
+      <th>
+        <button (click)="delete(field.label)">delete</button>
+      </th>
+    </tr>
+  </tbody>
+  <ng-template #loading>
+    <i class="fa fa-refresh fa-spin" style="font-size:24px; color: black;"></i> Loading...
+  </ng-template>
+</table>
+
+<button type="button" class="btn btn-lg btn-toolbar col-xs-12 col-lg-12" [routerLink]="['/fields/editor','create_new']">
+  <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Add Field
+</button>
+
