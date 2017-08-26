@@ -15,6 +15,7 @@ export class FieldEditorComponent implements OnInit
               private admin_service : AdminService,
               private router : Router) {}
   //
+  public error_message:string ='';
   public new_item:string='';
   public options:string[]=[];
   public field : Field;
@@ -61,11 +62,14 @@ export class FieldEditorComponent implements OnInit
   }
   //
   private validate() : boolean {
-    if((this.field.label.length <= 2)||
-      (this.field.items !== null && this.field.items.length < 2))
-      return false;
-
-    return true;
+    this.error_message = '';
+    if(this.field.label.length < 3) {
+        this.error_message += '[Label must be longer than two characters]';
+    }
+    if(this.field.items !== null && this.field.items.length < 2) {
+        this.error_message += '[Options number must be two at least]';
+    }
+    return this.error_message === '';
   }
   //
   public save() {
@@ -78,9 +82,6 @@ export class FieldEditorComponent implements OnInit
                     this.router.navigateByUrl('fields');},
                 (err)=>{
                     console.log(err.message);});
-    }
-    else {
-      console.log('invalidate. cant save ');
     }
   }
   //

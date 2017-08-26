@@ -12,8 +12,8 @@ export class LoginComponent
               private router:Router) {}
   //
   public error_message:string ='';
-  public password:string;
-  public login:string;
+  public password:string='';
+  public login:string='';
   //====================================================================================================================
   public logIn() {
     let form = this.validform();
