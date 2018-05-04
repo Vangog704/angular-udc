@@ -6,21 +6,21 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var field_editor_component_1 = require("../admin-cab/fields/field-editor.component");
-var response_list_component_1 = require("../admin-cab/responses/response-list.component");
-var field_list_component_1 = require("../admin-cab/fields/field-list.component");
-var app_routing_module_1 = require("../app-routing.module");
+var field_editor_component_1 = require("./admin-cab/fields/field-editor.component");
+var response_list_component_1 = require("./admin-cab/responses/response-list.component");
+var field_list_component_1 = require("./admin-cab/fields/field-list.component");
+var app_routing_module_1 = require("./app-routing.module");
 var http_1 = require("@angular/common/http");
 var platform_browser_1 = require("@angular/platform-browser");
 var app_component_1 = require("./app.component");
-var admin_service_1 = require("../services/admin.service");
+var admin_service_1 = require("./services/admin.service");
 var forms_1 = require("@angular/forms");
 var core_1 = require("@angular/core");
-var custom_fields_components_1 = require("../data-collector/custom-fields.components");
-var field_list_component_2 = require("../data-collector/field-list.component");
-var admin_cab_component_1 = require("../admin-cab/admin-cab.component");
+var custom_fields_components_1 = require("./data-collector/custom-fields.components");
+var field_list_component_2 = require("./data-collector/field-list.component");
+var admin_cab_component_1 = require("./admin-cab/admin-cab.component");
 var login_component_1 = require("../admin-cab/loginer/login.component");
-var page_no_found_component_1 = require("../page-no-found.component");
+var page_no_found_component_1 = require("./page-no-found.component");
 //----------------------------------------------------------------------------------------------------------------------
 var AppModule = (function () {
     function AppModule() {
